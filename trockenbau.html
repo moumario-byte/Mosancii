@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trockenbau – Mosanci Innenausbau</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:#fff;
+  color:#222529;
+}
+
+/* ================= HEADER ================= */
+  .topHeader{
+  position:sticky;
+  top:0;
+  z-index:999;
+
+  background:#ffffff;
+  height:92px;
+  display:flex;
+  align-items:center;
+
+  border-bottom:1px solid rgba(226,229,232,.9);
+
+  /* normal shadow */
+  box-shadow:0 12px 28px rgba(0,0,0,.10);
+
+  /* needed so the fade works */
+  position:sticky;
+}
+
+/* AUSBAU-LIKE SOFT FADE UNDER HEADER */
+.topHeader::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-38px;
+  height:38px;
+  pointer-events:none;
+
+  background:linear-gradient(to bottom, rgba(0,0,0,.22), rgba(0,0,0,0));
+  filter:blur(10px);
+  opacity:.35;
+}
+
+.navwrap{
+  width:min(1150px,100%);
+  margin:0 auto;
+  padding:0 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.logoArea img{
+  height:69px;
+  display:block;
+}
+.nav{
+  list-style:none;
+  display:flex;
+  gap:22px;
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+.nav a{
+  text-decoration:none;
+  font-weight:700;
+  color:#3a3f44;
+  padding:12px 18px;
+  border-radius:0px;
+  transition:all .2s ease;
+  display:inline-block;
+}
+.nav a:hover{
+  background:#ff6a00;     /* orange square */
+  color:#ffffff;
+}
+.nav a.active{
+  background:#b8302a;     /* red active */
+  color:#ffffff;
+}
+.rightArea{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  white-space:nowrap;
+}
+.login{
+  background:#2b2f33;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:0px;
+  text-decoration:none;
+  font-weight:800;
+  transition:background .2s ease;
+}
+.login:hover{ background:#1f2124; }
+
+/* ================= HERO IMAGE ================= */
+.heroImage{
+  height:420px;
+  width:100%;
+  background:url("trockenbau.jpg") center/cover no-repeat;
+  position:relative;
+}
+.heroImage::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.15));
+}
+
+/* ================= HERO TITLE ================= */
+.heroTitle{
+  text-align:center;
+  padding:65px 20px 50px;
+}
+.heroTitle h1{
+  margin:0;
+  font-size:44px;
+  font-weight:900;
+}
+.heroTitle p{
+  max-width:850px;
+  margin:14px auto 0;
+  color:#6f757c;
+  line-height:1.7;
+  font-weight:500;
+}
+
+/* ================= CONTENT ================= */
+.section{
+  max-width:1100px;
+  margin:0 auto;
+  padding:60px 20px;
+}
+.section h2{
+  font-size:30px;
+  font-weight:900;
+  margin:0 0 14px;
+}
+.section p{
+  color:#6f757c;
+  line-height:1.8;
+  margin:0;
+  font-weight:500;
+}
+
+/* ================= FEATURES ================= */
+.features{
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:26px;
+}
+.featureCard{
+  background:#ffffff;
+  border:1px solid #eef0f2;
+  border-radius:10px;
+  padding:22px;
+  box-shadow:0 5px 20px rgba(0,0,0,.05);
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+}
+.featureIcon{
+  width:48px;
+  height:48px;
+  background:#2b2f33;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+}
+.featureIcon svg{
+  width:22px;
+  height:22px;
+  fill:#ffffff;
+}
+.featureText h3{
+  margin:0 0 6px;
+  font-size:18px;
+  font-weight:900;
+}
+.featureText p{
+  margin:0;
+  color:#6f757c;
+  line-height:1.6;
+}
+
+/* ================= TIMELINE ================= */
+.timeline{
+  background:#f5f6f7;
+  padding:80px 20px;
+  text-align:center;
+}
+.timeline h2{
+  font-size:30px;
+  font-weight:900;
+  margin:0 0 50px;
+}
+.timelineSteps{
+  display:flex;
+  justify-content:center;
+  gap:60px;
+  flex-wrap:wrap;
+}
+.step{
+  max-width:220px;
+}
+.circle{
+  width:70px;
+  height:70px;
+  background:#ff6a00;   /* orange circles */
+  color:#ffffff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:18px;
+  margin:0 auto 20px;
+  box-shadow:0 8px 20px rgba(255,106,0,.30);
+}
+.step h4{
+  margin:0 0 10px;
+  font-weight:900;
+}
+.step p{
+  margin:0;
+  color:#6f757c;
+  font-size:14px;
+  line-height:1.6;
+  font-weight:500;
+}
+
+/* ================= CTA ================= */
+.cta{
+  background:#ff6a00;
+  color:#ffffff;
+  text-align:center;
+  padding:55px 20px;
+}
+.cta h3{
+  margin:0 0 12px;
+  font-size:24px;
+  font-weight:900;
+}
+.cta p{
+  margin:0 auto 20px;
+  max-width:720px;
+  line-height:1.6;
+  font-weight:600;
+}
+.cta a{
+  display:inline-block;
+  background:#222529;
+  color:#ffffff;
+  padding:14px 30px;
+  text-decoration:none;
+  font-weight:900;
+  border-radius:4px;
+  transition:background .2s ease;
+}
+.cta a:hover{ background:#16181b; }
+
+/* ================= FOOTER ================= */
+footer{
+  background:#25272a;
+  color:#f1f3f5;
+}
+.footerTop{
+  max-width:1100px;
+  margin:0 auto;
+  padding:50px 20px;
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr;
+  gap:40px;
+}
+.footerBrand h3{
+  margin:0;
+  font-weight:900;
+}
+.footerBrand p{
+  margin-top:12px;
+  line-height:1.6;
+  color:#cfd3d7;
+  font-weight:500;
+}
+.footerCol h4{
+  margin:0 0 15px;
+  font-weight:900;
+}
+.footerCol a{
+  display:block;
+  margin-bottom:10px;
+  color:#cfd3d7;
+  text-decoration:none;
+  font-weight:600;
+  transition:color .2s ease;
+}
+.footerCol a:hover{ color:#ffffff; }
+.footerBottom{
+  border-top:1px solid rgba(255,255,255,.08);
+  text-align:center;
+  padding:20px;
+  font-size:13px;
+  color:#9ca3af;
+  font-weight:600;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:980px){
+  header{ height:auto; }
+  .navwrap{ flex-wrap:wrap; padding:12px 16px; }
+  .nav{ flex-wrap:wrap; justify-content:center; }
+}
+@media (max-width:900px){
+  .features{ grid-template-columns:1fr; }
+  .footerTop{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="navwrap">
+    <div class="logoArea">
+      <img src="logo.png" alt="Mosanci Logo">
+    </div>
+
+    <ul class="nav">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="ueber-uns.html">Über uns</a></li>
+      <li><a class="active" href="trockenbau.html">Dienstleistungen</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+
+    <div class="rightArea">
+      <a class="login" href="#">Login</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div class="heroImage"></div>
+
+<!-- HERO TITLE -->
+<section class="heroTitle">
+  <h1>Trockenbau</h1>
+  <p>
+    Professionelle Trockenbauarbeiten für moderne Innenräume – flexibel, sauber und präzise.
+    Von Trennwänden bis Deckensystemen realisieren wir hochwertige Lösungen für Ihr Zuhause oder Gewerbe.
+  </p>
+</section>
+
+<!-- CONTENT + FEATURES -->
+<section class="section">
+  <h2>Unsere Leistungen im Trockenbau</h2>
+  <p>
+    Trockenbau ist die ideale Lösung für schnelle Umbauten und moderne Raumgestaltung.
+    Wir planen und montieren alles fachgerecht – zuverlässig, präzise und mit hochwertigen Materialien.
+  </p>
+
+  <div class="features">
+    <div class="featureCard">
+      <div class="featureIcon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 3h18v4H3V3Zm0 6h18v12H3V9Zm2 2v8h14v-8H5Z"/>
+        </svg>
+      </div>
+      <div class="featureText">
+        <h3>Trennwände & Raumaufteilung</h3>
+        <p>Neue Raumkonzepte mit stabilen Trockenbauwänden – schnell und sauber umgesetzt.</p>
+      </div>
+    </div>
+
+    <div class="featureCard">
+      <div class="featureIcon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2a7 7 0 0 0-7 7v3a5 5 0 0 0 10 0V9a3 3 0 0 0-6 0v3h2V9a1 1 0 0 1 2 0v3a3 3 0 0 1-6 0V9a5 5 0 0 1 10 0v3a7 7 0 0 1-14 0V9a9 9 0 0 1 18 0v3h-2V9a7 7 0 0 0-7-7Z"/>
+        </svg>
+      </div>
+      <div class="featureText">
+        <h3>Akustik & Schallschutz</h3>
+        <p>Mehr Ruhe im Alltag: Akustikdecken und Schallschutzlösungen für Wohn- & Arbeitsräume.</p>
+      </div>
+    </div>
+
+    <div class="featureCard">
+      <div class="featureIcon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3 2 11h3v10h6v-6h2v6h6V11h3L12 3Z"/>
+        </svg>
+      </div>
+      <div class="featureText">
+        <h3>Deckenabhängungen</h3>
+        <p>Moderne Deckenlösungen inkl. Integration von Spots, Kabeln und Isolierung.</p>
+      </div>
+    </div>
+
+    <div class="featureCard">
+      <div class="featureIcon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22 19.6 14.9 12.5a6.5 6.5 0 0 1-8.6-8.6l3.1 3.1 2.1-2.1-3.1-3.1a6.5 6.5 0 0 1 8.6 8.6L22 17.5l-2 2.1Z"/>
+        </svg>
+      </div>
+      <div class="featureText">
+        <h3>Individuelle Sonderlösungen</h3>
+        <p>Nischen, Vorsatzschalen, Dachschrägen & Maßarbeiten – exakt nach Ihren Anforderungen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline">
+  <h2>Your project timeline</h2>
+
+  <div class="timelineSteps">
+    <div class="step">
+      <div class="circle">01</div>
+      <h4>Advice</h4>
+      <p>On-site measurements &amp; material consultation</p>
+    </div>
+
+    <div class="step">
+      <div class="circle">02</div>
+      <h4>Planning</h4>
+      <p>Transparent cost estimate</p>
+    </div>
+
+    <div class="step">
+      <div class="circle">03</div>
+      <h4>Execution</h4>
+      <p>Framing, sheathing, plastering</p>
+    </div>
+
+    <div class="step">
+      <div class="circle">04</div>
+      <h4>Acceptance</h4>
+      <p>Handover in a broom-clean condition &amp; quality check</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h3>Jetzt Ihr Trockenbau-Projekt starten</h3>
+  <p>Kontaktieren Sie uns für eine kostenlose und unverbindliche Beratung.</p>
+  <a href="#">Kostenlose Beratung anfragen</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footerTop">
+    <div class="footerBrand">
+      <h3>Mosanci Innenausbau</h3>
+      <p>Your reliable partner for professional interior design and renovation work. Quality and precision for years.</p>
+    </div>
+
+    <div class="footerCol">
+      <h4>Contact</h4>
+      <a href="#">+49 (0) 2452 8607038</a>
+      <a href="#">info@mosanci.de</a>
+      <a href="#">Am Diebsweg 17, 52525 Heinsberg</a>
+    </div>
+
+    <div class="footerCol">
+      <h4>Quick Links</h4>
+      <a href="index.html">Homepage</a>
+      <a href="trockenbau.html">Trockenbau</a>
+      <a href="#">Contact</a>
+      <a href="#">Legal Notice &amp; Privacy Policy</a>
+    </div>
+  </div>
+
+  <div class="footerBottom">
+    © 2025 Mosanci Innenausbau Interior Design &amp; Renovation. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
